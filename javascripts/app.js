@@ -66,7 +66,6 @@ function moveForward(rover){
       console.log("You are at the edge, cannot go outside boundary");
       break;
   }
-  console.log("moveForward was called");
 
   if(rover.x < 0 || rover.y < 0 || rover.x > 9 || rover.y > 9 ){
     if (rover.x < 0) {
@@ -82,6 +81,25 @@ function moveForward(rover){
       console.log("moveForward was called");
       console.log("Rover position is: (x=" + rover.x + ", y=" + rover.y + ").");
       }
+  }
+
+  function command(comvalue){
+    for(i=0; i<comvalue.length; i++){
+      switch(comvalue[i]){
+        case"r":
+          turnRight(rover);
+          break;
+        case"l":
+          turnLeft(rover);
+          break;
+        case"f":
+          moveForward(rover);
+          break;
+        default:
+            console.log("Invalid Command!");
+            break;
+      }
+    }
   }
 
 
