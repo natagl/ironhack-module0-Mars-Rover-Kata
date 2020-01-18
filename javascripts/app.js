@@ -5,8 +5,9 @@
 let rover = {
   direction: "N",
   x : 0,
-  y : 0
- }
+  y : 0,
+  travelLog: []
+}
 
 function turnLeft(rover){
  // console.log("initial rover direction");
@@ -46,6 +47,8 @@ function turnRight(rover){
   console.log("turnRight was called!");
   console.log(`Rover is facing now to ${rover.direction}`);
 }
+
+
 function moveForward(rover){
 
   switch(rover.direction){
@@ -77,11 +80,18 @@ function moveForward(rover){
     } else if (rover.x > 9) {
       rover.x--;
     }     
-  } else {
+  } 
+  else {
       console.log("moveForward was called");
       console.log("Rover position is: (x=" + rover.x + ", y=" + rover.y + ").");
+      rover.travelLog.push({x: rover.x, y: rover.y});
+      console.log("History of travel: ");
+      for(i=0; i<rover.travelLog.length; i++){
+        console.log("(" + rover.travelLog[i].x + "," + rover.travelLog[i].y + ")" );
       }
+
   }
+}
 
   function command(comvalue){
     for(i=0; i<comvalue.length; i++){
@@ -101,5 +111,6 @@ function moveForward(rover){
       }
     }
   }
+
 
 
